@@ -31,18 +31,22 @@ const operate = function (o, x, y) {
 // gets the result of the operation and changes the value of firstNumber to result
 const equal = () => {
     let result = operate(operator, firstNumber, secondNumber);
-    display.textContent = result;
-    firstNumber = result;
-    secondNumber = '';
+    if (result !== undefined) {
+        display.textContent = result;
+        firstNumber = result;
+        secondNumber = '';
+        operator = '';
+    }
 };
 
-// reverts the value of all variables
-const clear = () => {
+// reverts the value of all variables.
+const clear = document.getElementById('clear');
+clear.addEventListener('click', () =>{
     display.textContent = '';
     firstNumber = '';
     operator = '';
     secondNumber = '';
-}
+});
 
 let firstNumber = '';
 let operator = '';
