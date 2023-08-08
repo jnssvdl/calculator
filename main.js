@@ -27,19 +27,32 @@ const operate = function (o, x, y) {
     }
 };
 
+const equal = () => {
+    let result = operate(operator, firstNumber, secondNumber);
+    display.textContent = result;
+    firstNumber = result;
+    secondNumber = '';
+};
+
+const clear = () => {
+    display.textContent = '';
+
+}
 
 let firstNumber = '';
 let operator = '';
 let secondNumber = '';
-const display = document.getElementById('display');
 
+const display = document.getElementById('display');
 
 const numbers = document.querySelectorAll('.number');
 numbers.forEach((number) => {
     number.addEventListener('click', () => {
         if (operator === '') {
+            display.textContent += number.id;
             firstNumber += number.id;
         } else {
+            display.textContent += number.id;
             secondNumber += number.id;
         }
     });
@@ -48,14 +61,11 @@ numbers.forEach((number) => {
 const operations = document.querySelectorAll('.operation');
 operations.forEach((operation) => {
     operation.addEventListener('click', () => {
-        operator = operation.id;
+        if (secondNumber !== '') {
+            equal();
+        } else {
+            operator = operation.id;
+            display.textContent = firstNumber + operation.id;
+        }
     });
 }); 
-
-const equal = document.querySelector('.equal');
-equal.addEventListener('click', () => {
-    let result = operate(operator, firstNumber, secondNumber);
-    console.log(result);
-    firstNumber = result;
-    secondNumber = '';
-});
