@@ -1,55 +1,33 @@
-const operate = function (firstNumber, operation, secondNumber) {
-    firstNumber = Number(firstNumber);
-    secondNumber = Number(secondNumber);
-    let result;
-    if (operation === '+') {
-        result = firstNumber + secondNumber;
-    } else if (operation === '-') {
-        result = firstNumber - secondNumber;
-    } else if (operation === '*') {
-        result = firstNumber * secondNumber;
-    } else if (operation === '/') {
-        result = firstNumber / secondNumber;
-    }
-    return result;
+const add = function (x, y) {
+    return x + y;
 };
 
-const getResult = () => {
-    let result = operate(firstNumber, operation, secondNumber);
-    display.textContent = result;
-    firstNumber = String(result);
-    operation = '';
-    secondNumber = '';
+const subtract = function (x, y) {
+    return x - y;
+}; 
+
+const multiply = function (x, y) {
+    return x * y;
+};
+
+const divide = function (x, y) {
+    return x / y;
+};
+
+const operate = function (operator, x, y) {
+
 };
 
 
-const display = document.getElementById('display');
-
-
-let displayValue = '';
 let firstNumber = '';
-let operation = '';
+let operator = '';
 let secondNumber = '';
+const display = document.getElementById('display');
 
 
 const numbers = document.querySelectorAll('.number');
 numbers.forEach((number) => {
     number.addEventListener('click', () => {
-        if (operation === '') {
-            firstNumber += number.id;
-        } else {
-            secondNumber += number.id;
-            getResult();
-        }
+        display.textContent += number.id;
     });
 });
-
-const operators = document.querySelectorAll('.operator');
-operators.forEach((operator) => {
-    operator.addEventListener('click', () => {
-        operation = operator.id;
-    });
-});
-
-const equal = document.querySelector('.equal');
-equal.addEventListener('click', getResult);

@@ -37,6 +37,12 @@ body {
     direction: rtl;
 }
 
+#display-value {
+    width: 200px;
+    height: 40px;
+    border: 1px solid red;
+}
+
 button {
     width: 20px;
     height: 20px;
