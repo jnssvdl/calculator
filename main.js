@@ -25,7 +25,7 @@ const operate = function (o, x, y) {
     } else if (o === '*') {
         result =  multiply(x, y);
     } else if (o ===  '/') {
-        result =divide(x, y);
+        result = divide(x, y);
     }
     return +result.toFixed(2);
 };
@@ -42,12 +42,27 @@ const equal = () => {
 };
 
 // reverts the value of all variables.
-const clear = document.getElementById('clear');
-clear.addEventListener('click', () =>{
+const ac = document.getElementById('ac');
+ac.addEventListener('click', () => {
     display.textContent = '';
     firstNumber = '';
     operator = '';
     secondNumber = '';
+});
+
+const del = document.getElementById('del');
+del.addEventListener('click', () => {
+    if (firstNumber === display.textContent) {
+        firstNumber = firstNumber.slice(0, firstNumber.length - 1);
+        display.textContent = firstNumber;
+        // console.log(`firstNumber ${firstNumber}`);
+    } else {
+        secondNumber = secondNumber.slice(0, secondNumber.length - 1);
+        display.textContent = display.textContent.slice(0, display.textContent.length - 1);
+        // console.log(`firstNumber ${firstNumber}`);
+        // console.log(`secondNumber ${secondNumber}`);
+        // console.log(display.textContent);
+    }
 });
 
 let firstNumber = '';
