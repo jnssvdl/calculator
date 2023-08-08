@@ -34,7 +34,7 @@ body {
     height: 50px;
     text-align: right;
     overflow: hidden;
-    direction: rtl;
+    /* direction: rtl; */
 }
 
 #display-value {
