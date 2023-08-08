@@ -14,6 +14,7 @@ const divide = function (x, y) {
     return x / y;
 };
 
+// basic math operators function
 const operate = function (o, x, y) {
     x = Number(x), y = Number(y);
     if (o === '+') {
@@ -27,6 +28,7 @@ const operate = function (o, x, y) {
     }
 };
 
+// gets the result of the operation and changes the value of firstNumber to result
 const equal = () => {
     let result = operate(operator, firstNumber, secondNumber);
     display.textContent = result;
@@ -34,9 +36,12 @@ const equal = () => {
     secondNumber = '';
 };
 
+// reverts the value of all variables
 const clear = () => {
     display.textContent = '';
-
+    firstNumber = '';
+    operator = '';
+    secondNumber = '';
 }
 
 let firstNumber = '';
@@ -45,6 +50,8 @@ let secondNumber = '';
 
 const display = document.getElementById('display');
 
+// changes the value of display according to the clicked button
+// and stores it to the corresponding number variable
 const numbers = document.querySelectorAll('.number');
 numbers.forEach((number) => {
     number.addEventListener('click', () => {
@@ -58,11 +65,14 @@ numbers.forEach((number) => {
     });
 });
 
+// concatenate the selected operation to the value of display
+// and equates it to the operator variable
 const operations = document.querySelectorAll('.operation');
 operations.forEach((operation) => {
     operation.addEventListener('click', () => {
         if (secondNumber !== '') {
             equal();
+            display.textContent += operation.id;
         } else {
             operator = operation.id;
             display.textContent = firstNumber + operation.id;
