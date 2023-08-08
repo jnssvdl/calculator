@@ -48,6 +48,6 @@ button {
     height: 20px;
 }
 
-#clear {
+#clear, #delete {
     width: fit-content;
 }

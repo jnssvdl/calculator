@@ -16,16 +16,18 @@ const divide = function (x, y) {
 
 // basic math operators function
 const operate = function (o, x, y) {
+    let result;
     x = Number(x), y = Number(y);
     if (o === '+') {
-        return add(x, y);
+        result = add(x, y);
     } else if (o === '-') {
-        return subtract(x, y);
+        result = subtract(x, y);
     } else if (o === '*') {
-        return multiply(x, y);
+        result =  multiply(x, y);
     } else if (o ===  '/') {
-        return divide(x, y);
+        result =divide(x, y);
     }
+    return +result.toFixed(2);
 };
 
 // gets the result of the operation and changes the value of firstNumber to result
@@ -76,6 +78,7 @@ operations.forEach((operation) => {
     operation.addEventListener('click', () => {
         if (secondNumber !== '') {
             equal();
+            operator = operation.id;
             display.textContent += operation.id;
         } else {
             operator = operation.id;
