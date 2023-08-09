@@ -41,7 +41,7 @@ const equal = () => {
     }
 };
 
-// reverts the value of all variables.
+// reverts the value of all variables
 const ac = document.getElementById('ac');
 ac.addEventListener('click', () => {
     display.textContent = '';
