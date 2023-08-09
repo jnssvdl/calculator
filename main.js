@@ -11,6 +11,10 @@ const multiply = function (x, y) {
 };
 
 const divide = function (x, y) {
+    if (y === 0) {
+        divisionByZero = true;
+        return 'Math ERROR';
+    }
     return x / y;
 };
 
@@ -27,7 +31,8 @@ const operate = function (o, x, y) {
     } else if (o ===  '÷') {
         result = divide(x, y);
     }
-    return +result.toFixed(2);
+    // return result;
+    return divisionByZero ? result + ' [AC]\t:Cancel': +result.toFixed(2);
 };
 
 // gets the result of the operation and changes the value of firstNumber to result
@@ -44,6 +49,7 @@ const equal = () => {
 // reverts the value of all variables
 const ac = document.getElementById('ac');
 ac.addEventListener('click', () => {
+    divisionByZero = false;
     display.textContent = '';
     firstNumber = '';
     operator = '';
@@ -52,18 +58,21 @@ ac.addEventListener('click', () => {
 
 const del = document.getElementById('del');
 del.addEventListener('click', () => {
-    if (firstNumber === display.textContent) {
-        firstNumber = firstNumber.slice(0, firstNumber.length - 1);
-        display.textContent = firstNumber;
-    } else {
-        secondNumber = secondNumber.slice(0, secondNumber.length - 1);
-        display.textContent = display.textContent.slice(0, display.textContent.length - 1);
+    if (!divisionByZero) {
+        if (firstNumber === display.textContent) {
+            firstNumber = firstNumber.slice(0, firstNumber.length - 1);
+            display.textContent = firstNumber;
+        } else {
+            secondNumber = secondNumber.slice(0, secondNumber.length - 1);
+            display.textContent = display.textContent.slice(0, display.textContent.length - 1);
+        }
     }
 });
 
 let firstNumber = '';
 let operator = '';
 let secondNumber = '';
+let divisionByZero = false;
 
 const display = document.getElementById('display');
 
@@ -72,12 +81,14 @@ const display = document.getElementById('display');
 const numbers = document.querySelectorAll('.number');
 numbers.forEach((number) => {
     number.addEventListener('click', () => {
-        if (operator === '') {
-            display.textContent += number.textContent;
-            firstNumber += number.textContent;
-        } else {
-            display.textContent += number.textContent;
-            secondNumber += number.textContent;
+        if (!divisionByZero) {
+            if (operator === '') {
+                display.textContent += number.textContent;
+                firstNumber += number.textContent;
+            } else {
+                display.textContent += number.textContent;
+                secondNumber += number.textContent;
+            }
         }
     });
 });
@@ -87,14 +98,16 @@ numbers.forEach((number) => {
 const operations = document.querySelectorAll('.operation');
 operations.forEach((operation) => {
     operation.addEventListener('click', () => {
-        if (firstNumber !== '') {
-            if (secondNumber !== '') {
-                equal();
-                operator = operation.textContent;
-                display.textContent += operation.textContent;
-            } else {
-                operator = operation.textContent;
-                display.textContent = firstNumber + operation.textContent;
+        if (!divisionByZero) {
+            if (firstNumber !== '') {
+                if (secondNumber !== '') {
+                    equal();
+                    operator = operation.textContent;
+                    display.textContent += operation.textContent;
+                } else {
+                    operator = operation.textContent;
+                    display.textContent = firstNumber + operation.textContent;
+                }
             }
         }
     });
