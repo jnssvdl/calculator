@@ -22,9 +22,9 @@ const operate = function (o, x, y) {
         result = add(x, y);
     } else if (o === '-') {
         result = subtract(x, y);
-    } else if (o === '*') {
+    } else if (o === '×') {
         result =  multiply(x, y);
-    } else if (o ===  '/') {
+    } else if (o ===  '÷') {
         result = divide(x, y);
     }
     return +result.toFixed(2);
@@ -55,13 +55,9 @@ del.addEventListener('click', () => {
     if (firstNumber === display.textContent) {
         firstNumber = firstNumber.slice(0, firstNumber.length - 1);
         display.textContent = firstNumber;
-        // console.log(`firstNumber ${firstNumber}`);
     } else {
         secondNumber = secondNumber.slice(0, secondNumber.length - 1);
         display.textContent = display.textContent.slice(0, display.textContent.length - 1);
-        // console.log(`firstNumber ${firstNumber}`);
-        // console.log(`secondNumber ${secondNumber}`);
-        // console.log(display.textContent);
     }
 });
 
@@ -77,11 +73,11 @@ const numbers = document.querySelectorAll('.number');
 numbers.forEach((number) => {
     number.addEventListener('click', () => {
         if (operator === '') {
-            display.textContent += number.id;
-            firstNumber += number.id;
+            display.textContent += number.textContent;
+            firstNumber += number.textContent;
         } else {
-            display.textContent += number.id;
-            secondNumber += number.id;
+            display.textContent += number.textContent;
+            secondNumber += number.textContent;
         }
     });
 });
@@ -93,11 +89,11 @@ operations.forEach((operation) => {
     operation.addEventListener('click', () => {
         if (secondNumber !== '') {
             equal();
-            operator = operation.id;
-            display.textContent += operation.id;
+            operator = operation.textContent;
+            display.textContent += operation.textContent;
         } else {
-            operator = operation.id;
-            display.textContent = firstNumber + operation.id;
+            operator = operation.textContent;
+            display.textContent = firstNumber + operation.textContent;
         }
     });
 }); 
