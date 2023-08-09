@@ -32,17 +32,19 @@ const operate = function (o, x, y) {
         result = divide(x, y);
     }
     // return result;
-    return divisionByZero ? result + ' [AC]\t:Cancel': +result.toFixed(2);
+    return divisionByZero ? result + ' [AC] :Cancel': +result.toFixed(2);
 };
 
 // gets the result of the operation and changes the value of firstNumber to result
 const equal = () => {
-    let result = operate(operator, firstNumber, secondNumber);
-    if (result !== undefined) {
-        display.textContent = result;
-        firstNumber = result;
-        secondNumber = '';
-        operator = '';
+    if (!divisionByZero) {
+        let result = operate(operator, firstNumber, secondNumber);
+        if (result !== undefined) {
+            display.textContent = result;
+            firstNumber = result;
+            secondNumber = '';
+            operator = '';
+        }
     }
 };
 
