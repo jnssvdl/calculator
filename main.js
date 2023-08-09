@@ -87,13 +87,15 @@ numbers.forEach((number) => {
 const operations = document.querySelectorAll('.operation');
 operations.forEach((operation) => {
     operation.addEventListener('click', () => {
-        if (secondNumber !== '') {
-            equal();
-            operator = operation.textContent;
-            display.textContent += operation.textContent;
-        } else {
-            operator = operation.textContent;
-            display.textContent = firstNumber + operation.textContent;
+        if (firstNumber !== '') {
+            if (secondNumber !== '') {
+                equal();
+                operator = operation.textContent;
+                display.textContent += operation.textContent;
+            } else {
+                operator = operation.textContent;
+                display.textContent = firstNumber + operation.textContent;
+            }
         }
     });
 }); 

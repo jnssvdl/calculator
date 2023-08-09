@@ -28,17 +28,18 @@ body {
     justify-content: center;
     align-items: center;
     gap: 20px;
+    background-color: #B4B4B4;
 }
 
 .calculator {
-    border-radius: 15px;
+    border-radius: 18px;
     background-color: #363636;
-    padding: 25px 15px 25px 15px;
+    padding: 28px 18px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-    box-shadow: 0 5px 10px #1B1610;
+    gap: 16px;
+    box-shadow: 0 5px 8px #1B1610;
 }
 
 @font-face {
@@ -49,15 +50,15 @@ body {
 #display {
     font-family: digital-7;
     box-shadow: inset 0 0 5px #1B1610;
-    border-radius: 5px;
-    width: 220px;
-    height: 60px;
+    border-radius: 8px;
+    width: 248px;
+    height: 70px;
     overflow: hidden;
     background-color: #9C9F84;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    font-size: 20px;
+    font-size: 24px;
     padding-right: 5px;
     /* direction: ltr; */
 }
@@ -77,24 +78,24 @@ body {
 .button-container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
 .button-container > div {
-    width: 245px;
+    /* width: 245px; */
     display: flex;
-    gap: 5px;
+    gap: 6px;
 }
 
 button {
     font-family: eurostile;
     font-weight: bolder;
-    width: 45px;
+    width: 48px;
     height: 30px;
     border: 0px;
     border-radius: 5px;
     color: #FBFCF8;
-    font-size: 16px;
+    font-size: 18px;
     background-color: #212121;
     box-shadow: 0 2px 2px #1B1610;
     cursor: pointer;
@@ -120,7 +121,7 @@ button:active {
 }
 
 #zero, #equal {
-    width: 95px;
+    width: 102px;
 }
 
 #seven {
@@ -138,3 +139,43 @@ button:active {
 #zero {
     border-bottom-left-radius: 10px;
 }
+
+#footer {
+    font-family: eurostile;
+    font-size: 14px;
+    color: black;
+    display: flex;
+    gap: 5px;
+}
+
+img {
+    width: 12px;
+    height: 12px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    gap: 5px;
+    position: relative;
+}
+
+a::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    /* border-radius: 1px; */
+    background-color: black;
+    bottom: 0;
+    left: 0;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .3s ease-in;
+  }
+  
+  a:hover::before {
+    transform-origin: left;
+    transform: scaleX(1);
+  }
