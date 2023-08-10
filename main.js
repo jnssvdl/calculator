@@ -61,7 +61,9 @@ ac.addEventListener('click', () => {
 const del = document.getElementById('del');
 del.addEventListener('click', () => {
     if (!divisionByZero) {
+        firstNumber = String(firstNumber);
         if (firstNumber === display.textContent) {
+            // console.log(`firstNumber ${firstNumber}`);
             firstNumber = firstNumber.slice(0, firstNumber.length - 1);
             display.textContent = firstNumber;
         } else {
