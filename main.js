@@ -91,11 +91,15 @@ numbers.forEach((number) => {
     number.addEventListener('click', () => {
         if (!divisionByZero) {
             if (operator === '') {
-                display.textContent += number.textContent;
-                firstNumber += number.textContent;
+                if (!(number.textContent === '.' && firstNumber.includes('.'))) {
+                    display.textContent += number.textContent;
+                    firstNumber += number.textContent;
+                }
             } else {
-                display.textContent += number.textContent;
-                secondNumber += number.textContent;
+                if (!(number.textContent === '.' && secondNumber.includes('.'))) {
+                    display.textContent += number.textContent;
+                    secondNumber += number.textContent;
+                }
             }
         }
     });
