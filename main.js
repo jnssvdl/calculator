@@ -18,7 +18,7 @@ const divide = function (x, y) {
     return x / y;
 };
 
-// basic math operators function
+// basic math operatorions function
 const operate = function (o, x, y) {
     let result;
     x = Number(x), y = Number(y);
@@ -49,21 +49,25 @@ const equal = () => {
 };
 
 // reverts the value of all variables
-const ac = document.getElementById('ac');
-ac.addEventListener('click', () => {
+const allClear = function () {
     divisionByZero = false;
     display.textContent = '';
     firstNumber = '';
     operator = '';
     secondNumber = '';
-});
+};
+
+const ac = document.getElementById('ac');
+ac.addEventListener('click', allClear);
 
 const del = document.getElementById('del');
 del.addEventListener('click', () => {
     if (!divisionByZero) {
+        if (display.textContent.length === 1) {
+            allClear();
+        }
         firstNumber = String(firstNumber);
         if (firstNumber === display.textContent) {
-            // console.log(`firstNumber ${firstNumber}`);
             firstNumber = firstNumber.slice(0, firstNumber.length - 1);
             display.textContent = firstNumber;
         } else {
